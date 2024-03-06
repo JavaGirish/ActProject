@@ -21,14 +21,13 @@ jobs:
 
     - name: Run Playwright tests
       run: npx playwright test
-                     
-  test-reports:
-    runs-on: ubuntu-latest
-    needs: [run-tests]
-    steps:
-    - uses: dorny/test-reporter@v1
+                       
+    - name: Test-Reports  
+      uses: dorny/test-reporter@v1
+      if: always()
       with:      
         name: Test Reports                      
         path: '**/test-results.json'                
-        reporter: mocha-json                 
+        reporter: mocha-json
+        fail-on-error: true                 
      
