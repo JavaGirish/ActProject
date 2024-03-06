@@ -62,5 +62,14 @@ jobs:
           name: html-report--attempt-${{ github.run_attempt }}
           path: playwright-report
           retention-days: 7        
-        
+            
+  report:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: dorny/test-reporter@v1
+      with:
+        artifact: test-results           
+        name: Test Reports                      
+        path: '**/*.json'                
+        reporter: mocha-json                 
      
