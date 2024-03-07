@@ -4,6 +4,10 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+permissions:
+  contents: read
+  actions: read
+  checks: write
 jobs:
   run-tests:
     timeout-minutes: 60
@@ -24,7 +28,7 @@ jobs:
                        
     - name: Junit-Reports  
       uses: dorny/test-reporter@v1
-      if: always()
+      if: always()      
       with:      
         name: Junit Test Reports                      
         path: '**/*.xml'                
