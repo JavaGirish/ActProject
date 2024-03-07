@@ -33,5 +33,14 @@ jobs:
         name: Junit Test Reports                      
         path: '**/*.xml'                
         reporter: java-junit
-        fail-on-error: true                 
+        fail-on-error: true
+
+    - name: Json-Reports  
+      uses: dorny/test-reporter@v1
+      if: always()      
+      with:      
+        name: Json Test Reports                      
+        path: '**/*.json'                
+        reporter: mocha-json
+        fail-on-error: true             
       
