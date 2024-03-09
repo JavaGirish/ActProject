@@ -9,6 +9,7 @@ permissions:
   actions: read
   checks: write
   pull-requests: write
+  pages: write
 jobs:
   run-tests:
     timeout-minutes: 60
