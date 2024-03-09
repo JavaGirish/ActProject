@@ -24,7 +24,8 @@ module.exports = defineConfig({
   reporter: [
     ['list'],
     ['json', {  outputFile: 'test-results.json' }],
-    ['junit', { outputFile: 'results.xml' }]
+    ['junit', { outputFile: 'results.xml' }],
+    ['allure-playwright']
   ],
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
