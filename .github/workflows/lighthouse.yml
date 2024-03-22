@@ -9,6 +9,7 @@ jobs:
     - run: mkdir -p ${{ github.workspace }}/tmp/artifacts
     - name: Lighthouse
       uses: foo-software/lighthouse-check-action@master
+      id: lighthouseCheck
       with:
         outputDirectory: ${{ github.workspace }}/tmp/artifacts
         urls: 'https://www.amazon.in'
@@ -18,3 +19,15 @@ jobs:
       with:
         name: Lighthouse reports
         path: ${{ github.workspace }}/tmp/artifacts
+        
+    - name: Verify Lighthouse Check results
+      uses: foo-software/lighthouse-check-status-action@master
+      with:
+        lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
+        minAccessibilityScore: "90"
+        minBestPracticesScore: "80"
+        minPerformanceScore: "80"
+        minProgressiveWebAppScore: "80"
+        minSeoScore: "80"
+    
+    
